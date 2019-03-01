@@ -51,7 +51,7 @@ function loadDoc() {
 <!-- Top -->
 <div class="top">
 <h1>Welcome to Fungi's City Hall</h1>
-  <button type="button" onclick="updateContent()">Change Content</button>
+  <a href="/">Home</a>
 </div>
 
 
@@ -71,7 +71,11 @@ function loadDoc() {
   </div>
   <p id="test">
   <?php 
-    echo "<br>Your pseudo: ". $_POST['pseudo']. "your message: ". $_POST['message'];
+    echo "<br>Your pseudo: ". $_POST['pseudo']. "  your message: ". $_POST['message'];
+    $string = "<br>". $_POST['pseudo']. " said ". $_POST['message'];
+    $file = fopen("test.txt", "a");
+    fwrite($file, $string);
+    fclose($file);
     ?>
     </p>
 
