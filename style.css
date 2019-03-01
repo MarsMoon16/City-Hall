@@ -64,7 +64,9 @@ body a:hover {
   color: #f1f1f1;
 }
 .bottom {
+        position : absolute;
         bottom: 20px;
+        left: auto;
         text-align: center;
 }
 
