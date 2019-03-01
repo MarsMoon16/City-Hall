@@ -58,13 +58,15 @@ function loadDoc() {
 <!-- Content -->
 <div class="content">
   <div class="log">
-      <textarea id="content" disabled>
-      </textarea>
+      <span id="content">
+      </span>
   </div>
   <div class="inputs">
+    <form action="index.php" method="POST">
       Pseudo:<input type="text" name="pseudo" value="Anonymous"><br>
-      <input id="test2" type="text" name="message" value="">
-      <button type="button" onclick="send()">Submit</button>
+      <textarea id="test2" name="message" rows="5" cols="40" placeholder="Message"></textarea>
+      <input type="input" value="Send">
+    </form>
    </div>
   </div>
   <p id="test"></p>
