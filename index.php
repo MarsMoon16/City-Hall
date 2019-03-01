@@ -58,8 +58,8 @@ function loadDoc() {
 <!-- Content -->
 <div class="content">
   <div class="log">
-      <span id="content">
-      </span>
+      <textarea id="content" disabled>
+      </textarea>
   </div>
   <div class="inputs">
       Pseudo:<input type="text" name="pseudo" value="Anonymous"><br>
