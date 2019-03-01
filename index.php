@@ -18,7 +18,6 @@ header('Expires: 0');
   <script>
     function updateContent() {
       loadDoc();
-      setTimout(updateContent, 2000);
     }
     
 function loadDoc() {
@@ -27,6 +26,7 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML =
       this.responseText;
+      setTimout(updateContent, 2000);
     }
   };
   xhttp.open("GET", "log.txt?t=" + Math.random(), true);
