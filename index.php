@@ -15,6 +15,20 @@ header('Expires: 0');
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
+  <script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("content").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "log.txt", true);
+  xhttp.send();
+}
+</script>
+  
 </head>
 <body>
 
@@ -23,13 +37,14 @@ header('Expires: 0');
 <!-- Top -->
 <div class="top">
 <h1>Welcome to Fungi's City Hall</h1>
-<textarea>Salut 
-</textarea>
+  <button type="button" onclick="loadDoc()">Change Content</button>
 </div>
 
 
 <!-- Content -->
 <div class="content">
+  <span id="content">
+  </span>
 </div>
 
 
