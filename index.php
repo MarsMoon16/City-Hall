@@ -71,12 +71,14 @@ function loadDoc() {
   </div>
   <p id="test">
   <?php 
+    if ($_POST['message'] != NULL) {
     echo "<br>Your pseudo: ". $_POST['pseudo']. "  your message: ". $_POST['message'];
     $string = "<br>". $_POST['pseudo']. " said ". $_POST['message'];
     $file = fopen("test.txt", "a");
     echo fwrite($file, $string);
-    echo "wassup";
     fclose($file);
+    }
+    echo "<br>wassup";
     ?>
     </p>
 
