@@ -12,12 +12,10 @@ header('Expires: 0');
     $message = $_POST['message'];
     $string = "<br>". $pseudo. " ". date("H:i") . ": " . $message;
     $file = fopen("log.txt", "a") or die("Unable to open file!");
-    echo fwrite($file, $string);
+    fwrite($file, $string);
     fclose($file);
     }
   else { $pseudo = "Anonymous"; }
-    echo "<br>wassup";
-
 ?>
 
 <head>
