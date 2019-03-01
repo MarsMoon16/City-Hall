@@ -6,6 +6,17 @@
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
+  
+    if ($_POST['message'] != NULL) {
+    $pseudo = $_POST['pseudo'];
+    $message = $_POST['message'];
+    $string = "<br>". $pseudo. " ". date("H:i") . ": " $message;
+    $file = fopen("log.txt", "a") or die("Unable to open file!");
+    echo fwrite($file, $string);
+    fclose($file);
+    }
+  else { $pseudo = "Anonymous"; }
+    echo "<br>wassup";
 
 ?>
 
@@ -63,24 +74,12 @@ function loadDoc() {
   </div>
   <div class="inputs">
     <form action="index.php" method="POST">
-      Pseudo:<input type="text" name="pseudo" value="Anonymous"><br>
+      Pseudo:<input type="text" name="pseudo" value="<?php echo $pseudo; ?>"><br>
       <textarea id="test2" name="message" rows="5" cols="40" placeholder="Message"></textarea>
       <input type="submit" value="Send">
     </form>
    </div>
   </div>
-  <p id="test">
-  <?php 
-    if ($_POST['message'] != NULL) {
-    echo "<br>Your pseudo: ". $_POST['pseudo']. "  your message: ". $_POST['message'];
-    $string = "<br>". $_POST['pseudo']. " said ". $_POST['message'];
-    $file = fopen("log.txt", "a") or die("Unable to open file!");
-    echo fwrite($file, $string);
-    fclose($file);
-    }
-    echo "<br>wassup";
-    ?>
-    </p>
 
 <!-- Bottom -->
 <div class="bottom">
