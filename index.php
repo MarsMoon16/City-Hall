@@ -65,7 +65,7 @@ function loadDoc() {
     <form action="index.php" method="POST">
       Pseudo:<input type="text" name="pseudo" value="Anonymous"><br>
       <textarea id="test2" name="message" rows="5" cols="40" placeholder="Message"></textarea>
-      <input type="input" value="Send">
+      <input type="submit" value="Send">
     </form>
    </div>
   </div>
