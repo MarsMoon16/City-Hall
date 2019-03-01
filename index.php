@@ -69,7 +69,11 @@ function loadDoc() {
     </form>
    </div>
   </div>
-  <p id="test"></p>
+  <p id="test">
+  <?php 
+    echo "<br>Your pseudo: ". $_POST['pseudo']. "your message: ". $_POST['message'];
+    ?>
+    </p>
 
 <!-- Bottom -->
 <div class="bottom">
