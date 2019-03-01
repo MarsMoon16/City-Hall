@@ -66,6 +66,7 @@ body a:hover {
 .bottom {
         position : absolute;
         margin: auto;
+        bottom: 40px;
 }
 
 
