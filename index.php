@@ -29,7 +29,7 @@ function loadDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "log.txt", true);
+  xhttp.open("GET", "log.txt?t=" + Math.random(), true);
   xhttp.send();
 }
 </script>
