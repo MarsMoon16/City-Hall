@@ -30,10 +30,15 @@ function loadDoc() {
   xhttp.send();
 }
     function updateContent() {
+      var message = document.getElementById("test2").value;
    var client = new XMLHttpRequest();
   client.open("POST", "log.txt");
   client.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
   client.send("message");
+      message = "<br>readystate: " + client.readyState + "<br>client status: " + client.status;
+      document.getElementById("test").innerHTML = message;
+      document.getElementById("test2").value = "";
+      
 }
     
       
@@ -58,10 +63,11 @@ function loadDoc() {
   </div>
   <div class="inputs">
       Pseudo:<input type="text" name="pseudo" value="Anonymous"><br>
-      <input type="text" name="message" value="">
+      <input id="test2" type="text" name="message" value="">
       <button type="button" onclick="send()">Submit</button>
    </div>
   </div>
+  <p id="test"></p>
 
 <!-- Bottom -->
 <div class="bottom">
