@@ -10,7 +10,7 @@ header('Expires: 0');
     if ($_POST['message'] != NULL) {
     $pseudo = $_POST['pseudo'];
     $message = $_POST['message'];
-    $string = "<br>". $pseudo. " ". date("H:i") . ": " $message;
+    $string = "<br>". $pseudo. " ". date("H:i") . ": " . $message;
     $file = fopen("log.txt", "a") or die("Unable to open file!");
     echo fwrite($file, $string);
     fclose($file);
