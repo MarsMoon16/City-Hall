@@ -65,7 +65,7 @@ body a:hover {
 }
 .bottom {
         position : absolute;
-        margin: auto;
+        left: 20%;
         bottom: 40px;
 }
 
