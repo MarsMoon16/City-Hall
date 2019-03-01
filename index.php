@@ -22,6 +22,7 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML =
       this.responseText;
+      setTimeOut(loadDoc, 1000);
     }
   };
   xhttp.open("GET", "log.txt", true);
