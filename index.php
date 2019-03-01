@@ -16,9 +16,6 @@ header('Expires: 0');
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
   <script>
-    function updateContent() {
-      loadDoc();
-    }
     
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
@@ -26,17 +23,25 @@ function loadDoc() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML =
       this.responseText;
-      setTimeout(updateContent, 2000);
+      setTimeout(loadDoc, 2000);
     }
   };
   xhttp.open("GET", "log.txt?t=" + Math.random(), true);
   xhttp.send();
 }
+    function updateContent() {
+   var client = new XMLHttpRequest();
+  client.open("POST", "log.txt");
+  client.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+  client.send("message");
+}
+    
+      
 </script>
   
 </head>
 
-<body onload="updateContent()">
+<body onload="loadDoc()">
 
 <!-- Top -->
 <div class="top">
