@@ -16,13 +16,17 @@ header('Expires: 0');
 <link rel="stylesheet" type="text/css" href="style.css"/>
 
   <script>
+    function updateContent() {
+      loadDoc();
+      setTimout(updateContent, 2000);
+    }
+    
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("content").innerHTML =
       this.responseText;
-      setTimeOut(loadDoc, 1000);
     }
   };
   xhttp.open("GET", "log.txt", true);
@@ -31,23 +35,28 @@ function loadDoc() {
 </script>
   
 </head>
-<body>
 
-<body>
+<body onload="updateContent()">
 
 <!-- Top -->
 <div class="top">
 <h1>Welcome to Fungi's City Hall</h1>
-  <button type="button" onclick="loadDoc()">Change Content</button>
+  <button type="button" onclick="updateContent()">Change Content</button>
 </div>
 
 
 <!-- Content -->
 <div class="content">
-  <span id="content">
-  </span>
-</div>
-
+  <div class="log">
+      <span id="content">
+      </span>
+  </div>
+  <div class="inputs">
+      Pseudo:<input type="text" name="pseudo" value="Anonymous"><br>
+      <input type="text" name="message" value="">
+      <button type="button" onclick="send()">Submit</button>
+   </div>
+  </div>
 
 <!-- Bottom -->
 <div class="bottom">
