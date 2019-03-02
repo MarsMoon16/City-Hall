@@ -10,11 +10,18 @@ header('Expires: 0');
     if ($_POST['message'] != NULL) {
     $pseudo = $_POST['pseudo'];
     $message = $_POST['message'];
+      if ($_POST['message'] == "clear") {
+        $file = fopen("log.txt", "w") or die("Unable to clear file!");
+        
+        fclose($file);
+        }
+      else {
     $string = "<br>". $pseudo. " ". date("H:i") . ": " . $message;
     $file = fopen("log.txt", "a") or die("Unable to open file!");
     fwrite($file, $string);
     fclose($file);
     }
+      }
   else { $pseudo = "Anonymous"; }
 ?>
 
@@ -38,17 +45,7 @@ function loadDoc() {
   xhttp.open("GET", "log.txt?t=" + Math.random(), true);
   xhttp.send();
 }
-    function updateContent() {
-      var message = document.getElementById("test2").value;
-   var client = new XMLHttpRequest();
-  client.open("POST", "log.txt");
-  client.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-  client.send("message");
-      message = "<br>readystate: " + client.readyState + "<br>client status: " + client.status;
-      document.getElementById("test").innerHTML = message;
-      document.getElementById("test2").value = "";
-      
-}
+
     
       
 </script>
@@ -72,8 +69,8 @@ function loadDoc() {
   </div>
   <div class="inputs">
     <form action="index.php" method="POST">
-      Pseudo:<input type="text" name="pseudo" value="<?php echo $pseudo; ?>"><br>
-      <textarea id="test2" name="message" rows="5" cols="40" placeholder="Message"></textarea>
+      <p>Pseudo:<input type="text" name="pseudo" value="<?php echo $pseudo; ?>"><br>
+      <textarea id =test2" name="message" rows="5" cols="40" placeholder="Message"></textarea>
       <input type="submit" value="Send">
     </form>
    </div>
