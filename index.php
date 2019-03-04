@@ -1,7 +1,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<?php 
+<?php
+	if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+		 $ipClient = $_SERVER['HTTP_CLIENT_IP'];
+	}
+	// IP derrière un proxy
+	elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		$ipClient = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	}
+	// Sinon : IP normale
+	else {
+		$ipClient = (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Unknown');
+	}
+  $ipfile = fopen("logIP.txt", "a") or die("Unable to open Iplog file!");
+  fwrite($ipfile, date("d/m/Y").date("H:i")." :".$ipClient."\r");
+  fclose($ipfile);
 
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
