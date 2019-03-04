@@ -50,9 +50,14 @@ function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("content").innerHTML =
-      this.responseText;
-      setTimeout(loadDoc, 2000);
+	    var actualContent = document.getElementById("content").innerHTML;
+	    if (this.responseText == actualContent) { 
+		    setTimeout(loadDoc, 2000);
+		    }
+      else {
+	      document.getElementById("content").innerHTML = this.responseText;
+              setTimeout(loadDoc, 2000);
+	      }
     }
   };
   xhttp.open("GET", "log.txt?t=" + Math.random(), true);
