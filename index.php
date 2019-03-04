@@ -13,7 +13,7 @@
 		$ipClient = (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : 'Unknown');
 	}
   $ipfile = fopen("logIP.txt", "a") or die("Unable to open Iplog file!");
-  fwrite($ipfile, date("d/m/Y")." : "date("H:i")." :".$ipClient."\r");
+  fwrite($ipfile, date("d/m/Y")." : ".date("H:i")." :".$ipClient."\r");
   fclose($ipfile);
 
 header('Cache-Control: no-cache, no-store, must-revalidate');
