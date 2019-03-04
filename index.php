@@ -29,7 +29,7 @@ header('Expires: 0');
         fclose($file);
         }
       else {
-    $string = "<br>". $pseudo. " ". date("H:i") . ": " . $message;
+	      $string = "<p>". $pseudo. " ". date("H:i") . ": " . $message."</p>";
     $file = fopen("log.txt", "a") or die("Unable to open file!");
     fwrite($file, $string);
     fclose($file);
